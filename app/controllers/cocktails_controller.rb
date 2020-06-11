@@ -1,0 +1,31 @@
+class CocktailsController < ApplicationController
+  # [:index, :show, :new, :create]
+  def index
+    @cocktails = Cocktail.all
+  end
+
+  def show
+    @cocktail = Cocktail.find(params[:id])
+    # raise
+  end
+
+  def new
+    @cocktail = Cocktail.new
+  end
+
+  def create
+    @cocktail = Cocktail.new(cocktails_params)
+
+    if @cocktail.save
+      redirect_to @cocktails
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def cocktails_params
+    params.require(:cocktail).permit(:name)
+  end
+end
