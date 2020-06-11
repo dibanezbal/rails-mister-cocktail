@@ -1,7 +1,8 @@
-<h1>Add a new cocktails</h1>
-<%= simple_form_for(@cocktail, @dose) do |f| %>
+<h1>Add a new dose</h1>
+<%= simple_form_for([@cocktail, @dose]) do |f| %>
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.association :ingredient %>
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
